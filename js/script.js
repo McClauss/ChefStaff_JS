@@ -1,22 +1,10 @@
-/*Declaración de Variables y Constantes*/
-
-//Variable para el menu de opciones
-let opcionMenu;
-let validacion;
-
-
-
-/*Declaracion de funciones*/
-function categorias() {
-    //Arreglo con categorías de profesionales
-    const arrayStaff = ["1. Cocinero", "2. Ayudante de Cocina", "3. Stewrad", "4. Bartender", "5. Mesero, 6. Otro"];
-    console.log(arrayStaff);
-}
-
 function menuInicio() {
-    
+
+    let validacion;
+    let opcionMenu;
+
     do {
-        opcionMenu = parseInt(prompt("***Bienvenido a los Servicios de ChefStaff. La plataforma con los mejores profesionales del sector gastronómico***\n"+"Ingresa la opción que deseas consultar:\n" + "1. Consultar Categorías de Staff\n" + "2. Salir\n"));
+        opcionMenu = parseInt(prompt("***Bienvenido a los Servicios de ChefStaff. La plataforma con los mejores profesionales del sector gastronómico***\n" + "Ingresa la opción que deseas consultar:\n" + "1. Consultar Categorías de Staff\n" + "2. Salir\n"));
 
         validacion = isNaN(opcionMenu);
         if (!validacion) {
@@ -32,9 +20,56 @@ function menuInicio() {
             console.error("Número no válido. Ingresa 1 o 2");
         }
     } while (validacion);
+}
 
-    console.log(validacion);
+function consultaStaff(op){
+    switch(op){
+        case 1:
+            cocinero();
+            break;
+        case 2:
+            //ayudanteCocina();
+            break;
+        case 3:
+            //steward();
+            break;
+        case 4:
+            //bartender();
+            break;
+        case 5:
+            //mesero();
+            break;
+        case 6:
+            //otro();
+            break
+        default:
+            console.log("Gracias por preferir ChefStaff!! Vuelve pronto");    
+    }
+}
 
+function categorias() {
+    //Arreglo con categorías de profesionales
+    const arrayStaff = ["Cocinero", "Ayudante de Cocina", "Steward", "Bartender", "Mesero", "Otro"];
+
+    let validacion;
+    let opcionMenu;
+
+    do {
+        opcionMenu = parseInt(prompt("***Seleccione el tipo de Staff a Contratar: ***\n" + "1. Cocinero\n" + "2. Ayudante de Cocina\n" + "3. Steward\n" + "4. Bartender\n" + "5. Mesero\n" + "6. Otro\n" + "7. Salir"));
+
+        validacion = isNaN(opcionMenu);
+
+        if (!validacion) {
+            if (opcionMenu < 1 || opcionMenu > 7) {
+                validacion = true;
+                console.error("Número no válido. Ingresa Valor entre 1 o 7");
+            } else {
+                consultaStaff(op);
+            }
+        } else {
+            console.error("Número no válido. Ingresa Valor entre 1 o 7");
+        }
+    } while (validacion);
 }
 
 /*Inicio*/
