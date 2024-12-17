@@ -4,7 +4,7 @@ function menuInicio() {
     let opcionMenu;
 
     do {
-        opcionMenu = parseInt(prompt("***ChefStaff. La plataforma con los mejores profesionales del sector gastronómico***\n" + "Ingresa la opción que deseas consultar:\n" + "1. Contratar Staff Gastronómico\n" + "2. Salir\n"));
+        opcionMenu = parseInt(prompt("***ChefStaff. Profesionales del sector gastronómico***\n" + "Ingresa la opción :\n" + "1. Contratar Staff Gastronómico\n" + "2. Salir\n"));
 
         validacion = isNaN(opcionMenu);
         if (!validacion) {
@@ -27,19 +27,19 @@ function categorias() {
     let opcionMenu;
 
     do {
-        opcionMenu = parseInt(prompt("***Seleccione el tipo de Staff a Contratar: ***\n" + "1. Cocinero\n" + "2. Ayudante de Cocina(Uso Futuro)\n" + "3. Steward(Uso Futuro)\n" + "4. Bartender(Uso Futuro)\n" + "5. Mesero(Uso Futuro)\n" + "6. Otro(Uso Futuro)\n" + "7. Salir"));
+        opcionMenu = parseInt(prompt("***Seleccione el tipo de Staff : ***\n" + "1. Cocinero\n" + "2. Ayudante de Cocina\n" +"3. Otro(Uso Futuro)\n" + "4. Salir"));
 
         validacion = isNaN(opcionMenu);
 
         if (!validacion) {
-            if (opcionMenu < 1 || opcionMenu > 7) {
+            if (opcionMenu < 1 || opcionMenu > 4) {
                 validacion = true;
-                console.error("Número no válido. Ingresa Valor entre 1 o 7");
+                console.error("Número no válido. Ingresa Valor entre 1 o 4");
             } else {
                 consultaStaff(opcionMenu);
             }
         } else {
-            console.error("Número no válido. Ingresa Valor entre 1 o 7");
+            console.error("Número no válido. Ingresa Valor entre 1 o 4");
         }
     } while (validacion);
 }
@@ -50,18 +50,9 @@ function consultaStaff(op){
             cocinero();
             break;
         case 2:
-            //ayudanteCocina();
+            ayudanteCocina();
             break;
         case 3:
-            //steward();
-            break;
-        case 4:
-            //bartender();
-            break;
-        case 5:
-            //mesero();
-            break;
-        case 6:
             //otro();
             break
         default:
@@ -92,7 +83,8 @@ function cocinero(){
 }
 
 function consultaCocineros(op){
-    const arrayCocineros = ["Chef Profesional\n"+"$25.000 CLP/hora", "Chef Técnico\n"+"$20.000 CLP/hora", "Cocinero Amateur"+"$15.000 CLP/hora"];
+    
+    const arrayCocineros = ["Chef Profesional por $25.000 CLP/hora", "Chef Técnico por $20.000 CLP/hora", "Cocinero Amateur por $15.000 CLP/hora"];
     console.log(op);
 
     for (let i=0; i<arrayCocineros.length;i++){
@@ -101,6 +93,41 @@ function consultaCocineros(op){
         }
     }
 }
+
+function ayudanteCocina(){
+    let validacion;
+    let opcionMenu;
+
+    do {
+        opcionMenu = parseInt(prompt("***Ayudante Cocina de GastroStaff***\n"+" Selecciona la opción a contratar: ***\n" + "1. Ayudante Profesional\n" + "2. Ayudante técnico\n" + "3. Ayudante Amateur\n" + "4. Ninguno"));
+
+        validacion = isNaN(opcionMenu);
+
+        if (!validacion) {
+            if (opcionMenu < 1 || opcionMenu > 4) {
+                validacion = true;
+                console.error("Número no válido. Ingresa Valor entre 1 o 4");
+            } else {
+                consultaAyudante(opcionMenu);
+            }
+        } else {
+            console.error("Número no válido. Ingresa Valor entre 1 o 4");
+        }
+    } while (validacion);
+}
+
+function consultaAyudante(op){
+    
+    const arrayAyudantes = ["Ayudante Profesional por $15.000 CLP/hora", "Ayudante Técnico por $10.000 CLP/hora", "Ayudante Amateur por $8.000 CLP/hora"];
+    console.log(op);
+
+    for (let i=0; i<arrayAyudantes.length;i++){
+        if(i==op-1){
+            console.log("Contrataste \n"+arrayAyudantes[i]);
+        }
+    }
+}
+
 /*Inicio*/
 menuInicio();
 
